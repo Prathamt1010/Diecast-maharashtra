@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, ImageOff } from "lucide-react";
 
-import "./CustomerProductCard.css";
+import "./customerProductCard.css";
 
 const CustomerProductCard = ({ product }) => {
   const price = Number(product.price || 0).toLocaleString("en-IN");

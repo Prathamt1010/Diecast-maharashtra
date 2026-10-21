@@ -1,6 +1,6 @@
 import React from "react";
 import { Bell } from "lucide-react";
-import "./Header.css";
+import "./header.css";
 
 const Header = ({ title = "Dashboard" }) => {
   return (

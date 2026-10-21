@@ -7,7 +7,7 @@ import {
   updateTestimonial,
 } from "../../../api/testimonialApi";
 
-import "./TestimonialForm.css";
+import "./testimonialForm.css";
 
 const TestimonialForm = ({
   show,

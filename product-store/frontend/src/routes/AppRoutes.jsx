@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   BrowserRouter,
@@ -6,33 +7,28 @@ import {
   Navigate,
 } from "react-router-dom";
 
-// ================= ADMIN =================
+import { useAuth } from "../context/AuthContext";
+
+// Admin pages
 import Login from "../pages/Login/login";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Products from "../pages/Products/Products";
 import Categories from "../pages/Categories/Categories";
+import Testimonials from "../pages/Testimonials/Testimonials";
 import Layout from "../components/Layout";
 
-// ================= CUSTOMER =================
+// Customer pages
 import CustomerHome from "../pages/CustomerHome/CustomerHome";
-import CustomerNavbar from "../components/CustomerNavbar/CustomerNavbar";
- import CustomerProducts from "../pages/CustomerProducts/CustomerProducts";
+import CustomerProducts from "../pages/CustomerProducts/CustomerProducts";
 import CustomerProductDetails from "../pages/CustomerProductDetails/CustomerProductDetails";
-// Uncomment when these components are created
 import CustomerCategories from "../pages/CustomerCategories/CustomerCategories";
-import Testimonials from "../pages/Testimonials/Testimonials";
 
-import { useAuth } from "../context/AuthContext";
-
-
-// =========================================
-// PRIVATE ROUTE
-// =========================================
+// Protect admin routes
 
 const PrivateRoute = ({ children }) => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, admin, token } = useAuth();
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated || !token || !admin) {
     return <Navigate to="/login" replace />;
   }
 
@@ -40,121 +36,66 @@ const PrivateRoute = ({ children }) => {
 };
 
 
-// =========================================
-// APP ROUTES
-// =========================================
+// Redirect authenticated admins away from login
+const PublicLoginRoute = () => {
+  const { isAuthenticated } = useAuth();
+
+  return isAuthenticated
+    ? <Navigate to="/dashboard" replace />
+    : <Login />;
+};
 
 const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
 
-        {/* ===================================== */}
         {/* CUSTOMER PUBLIC ROUTES */}
-        {/* ===================================== */}
-
-        {/* Customer Home */}
-        <Route
-          path="/"
-          element={<CustomerHome />}
-        />
-
-        {/* Customer Shop */}
-        <Route
-          path="/shop"
-          element={
-            <>
-             
-
-              <CustomerProducts />
-
-              
-            </>
-          }
-        />
-
-        {/* Customer Categories */}
+        <Route path="/" element={<CustomerHome />} />
+        <Route path="/shop" element={<CustomerProducts />} />
         <Route
           path="/shop/categories"
-          element={
-            <>
-             
-
-              <CustomerCategories />
-
-              
-            </>
-          }
+          element={<CustomerCategories />}
         />
-
-        {/* Customer Product Details */}
         <Route
           path="/shop/products/:id"
-          element={
-            <>
-             
-
-              <CustomerProductDetails />
-
-             
-            </>
-          }
+          element={<CustomerProductDetails />}
         />
 
-
-        {/* ===================================== */}
-        {/* ADMIN PUBLIC ROUTE */}
-        {/* ===================================== */}
-
+        {/* ADMIN LOGIN */}
         <Route
           path="/login"
-          element={<Login />}
+          element={<PublicLoginRoute />}
         />
 
-
-        {/* ===================================== */}
         {/* ADMIN PRIVATE ROUTES */}
-        {/* ===================================== */}
-
         <Route
+          path="/"
           element={
             <PrivateRoute>
               <Layout />
             </PrivateRoute>
           }
         >
-          {/* Private Admin Dashboard */}
           <Route
-            path="/dashboard"
-            element={<PrivateRoute><Dashboard /></PrivateRoute>}
+            path="dashboard"
+            element={<Dashboard />}
           />
-
-          {/* Private Admin Products */}
           <Route
-            path="/products"
-            element={<PrivateRoute><Products /></PrivateRoute>}
+            path="products"
+            element={<Products />}
           />
-
-          {/* Private Admin Categories */}
           <Route
-            path="/categories"
-            element={<PrivateRoute><Categories /></PrivateRoute>}
+            path="categories"
+            element={<Categories />}
           />
-<Route
-  path="/testimonials"
-  element={<Testimonials />}
-/>
-
-
+          <Route
+            path="testimonials"
+            element={<Testimonials />}
+          />
         </Route>
 
-        
-
-
-        {/* ===================================== */}
-        {/* DEFAULT ROUTE */}
-        {/* ===================================== */}
-
+        {/* UNKNOWN ROUTES */}
         <Route
           path="*"
           element={<Navigate to="/" replace />}

@@ -5,7 +5,7 @@ import {
   Tags,
   AlertCircle,
 } from "lucide-react";
-import "./Dashboard.css";
+import "./dashboard.css";
 
 const Dashboard = () => {
   const stats = [

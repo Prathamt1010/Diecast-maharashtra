@@ -1,0 +1,413 @@
+/* =========================================
+   FONTS + TOKENS
+   Keep these values identical to CustomerHome.css
+   so the navbar and hero read as one system.
+========================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Sans:wght@400;500;600;700&display=swap");
+
+.customer-navbar {
+  --yellow: #ffd400;
+  --asphalt: #1c1b19;
+  --white: #ffffff;
+  --muted: #62605a;
+  --rule: rgba(28, 27, 25, 0.12);
+
+  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --font-body: "Instrument Sans", "Segoe UI", system-ui, -apple-system,
+    Roboto, sans-serif;
+
+  --nav-h: 80px;
+
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--nav-h);
+  padding: 0 clamp(18px, 4vw, 48px);
+  border-bottom: 2px solid var(--asphalt);
+  background: var(--white);
+  color: var(--asphalt);
+  font-family: var(--font-body);
+}
+
+.customer-navbar *,
+.customer-navbar *::before,
+.customer-navbar *::after {
+  box-sizing: border-box;
+}
+
+.customer-navbar a:focus-visible,
+.customer-navbar button:focus-visible {
+  outline: 3px solid var(--asphalt);
+  outline-offset: 2px;
+}
+
+/* =========================================
+   LOGO
+========================================= */
+
+.customer-navbar-logo {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.customer-logo-mark {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 10px;
+  /* background: var(--yellow); */
+}
+
+/*
+  If your logo already carries its own colour/background, drop the
+  background above and remove the padding below so it isn't boxed twice.
+*/
+.customer-logo-image {
+  display: block;
+  width: 100%; 
+  height: 100%;
+  object-fit: contain;
+  /* padding: 5px; */
+}
+
+.customer-logo-fallback {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.customer-logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1;
+}
+
+.customer-logo-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.customer-logo-subtitle {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   DESKTOP NAV
+========================================= */
+
+.customer-desktop-nav {
+  position: absolute;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 1.4vw, 28px);
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.customer-nav-link {
+  position: relative;
+  padding: 8px 2px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.customer-nav-link::after {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  height: 3px;
+  background: var(--yellow);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.25s ease;
+}
+
+.customer-nav-link:hover {
+  color: var(--asphalt);
+}
+
+.customer-nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.customer-nav-link.active {
+  color: var(--asphalt);
+}
+
+.customer-nav-link.active::after {
+  transform: scaleX(1);
+}
+
+/* =========================================
+   SHOP BUTTON (desktop) — echoes the hero CTA
+========================================= */
+
+.customer-navbar-actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  margin-left: auto;
+}
+
+.customer-navbar-shop-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 26px;
+  border: 2px solid var(--asphalt);
+  background: var(--yellow);
+  color: var(--asphalt);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transform: skewX(-10deg);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.25s ease;
+}
+
+.customer-navbar-shop-btn > span {
+  display: block;
+  transform: skewX(10deg);
+}
+
+.customer-navbar-shop-btn:hover {
+  background: var(--asphalt);
+  color: var(--yellow);
+  transform: skewX(-10deg) translateY(-2px);
+}
+
+/* =========================================
+   MOBILE TRIGGER
+========================================= */
+
+.customer-mobile-actions {
+  display: none;
+  margin-left: auto;
+}
+
+.customer-menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 2px solid var(--asphalt);
+  background: var(--white);
+  color: var(--asphalt);
+  cursor: pointer;
+}
+
+.customer-menu-button:hover {
+  background: var(--yellow);
+}
+
+/* =========================================
+   MOBILE MENU (full screen)
+========================================= */
+
+.customer-mobile-menu {
+  position: fixed;
+  z-index: 999;
+  inset: var(--nav-h) 0 0 0;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(20px, 5vw, 40px);
+  overflow-y: auto;
+  background: var(--white);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.customer-mobile-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-mobile-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 2px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--asphalt);
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 8vw, 2.6rem);
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.customer-mobile-link svg {
+  flex-shrink: 0;
+  color: var(--muted);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.customer-mobile-link.active {
+  color: var(--asphalt);
+}
+
+.customer-mobile-link.active svg {
+  color: var(--asphalt);
+  transform: rotate(45deg);
+}
+
+.customer-mobile-shop-btn {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  margin-top: 24px;
+  border: 2px solid var(--asphalt);
+  background: var(--yellow);
+  color: var(--asphalt);
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1050px) {
+  .customer-nav-link {
+    font-size: 13px;
+  }
+}
+
+/* =========================================
+   MOBILE BREAKPOINT
+========================================= */
+
+@media (max-width: 850px) {
+  .customer-navbar {
+    --nav-h: 64px;
+  }
+
+  .customer-desktop-nav,
+  .customer-navbar-actions {
+    display: none;
+  }
+
+  .customer-mobile-actions {
+    display: flex;
+  }
+
+  .customer-mobile-menu {
+    display: flex;
+  }
+
+  .customer-mobile-menu.show {
+    opacity: 1;
+  }
+
+  .customer-mobile-menu:not(.show) {
+    visibility: hidden;
+  }
+
+  .customer-mobile-menu.show .customer-mobile-link {
+    animation: customerMobileLinkIn 0.45s ease both;
+    animation-delay: calc(0.06s * var(--i));
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .customer-logo-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+  }
+
+  .customer-logo-title {
+    font-size: 17px;
+  }
+
+  .customer-logo-subtitle {
+    font-size: 9px;
+  }
+
+  .customer-menu-button {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* =========================================
+   VERY SMALL DEVICES
+========================================= */
+
+@media (max-width: 380px) {
+  .customer-navbar {
+    padding: 0 14px;
+  }
+
+  .customer-navbar-logo {
+    gap: 8px;
+  }
+}
+
+/* =========================================
+   ANIMATION
+========================================= */
+
+@keyframes customerMobileLinkIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .customer-navbar *,
+  .customer-navbar *::before,
+  .customer-navbar *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .customer-mobile-menu.show .customer-mobile-link {
+    opacity: 1;
+    transform: none;
+  }
+}

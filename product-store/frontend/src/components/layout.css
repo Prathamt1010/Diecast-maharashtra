@@ -1,0 +1,72 @@
+/* ================================
+   GLOBAL LAYOUT
+================================ */
+
+.admin-layout {
+  min-height: 100vh;
+  width: 100%;
+
+  display: flex;
+
+  background: #f5f6f8;
+  color: #111111;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Main content */
+
+.admin-main {
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+
+  margin-left: 250px;
+
+  transition: margin-left 0.25s ease;
+}
+
+.admin-content {
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+  padding: 24px;
+
+  box-sizing: border-box;
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 900px) {
+
+  .admin-main {
+    margin-left: 80px;
+  }
+
+  .admin-content {
+    padding: 20px;
+  }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+  .admin-main {
+    margin-left: 0;
+
+    padding-bottom: 70px;
+  }
+
+  .admin-content {
+    padding: 16px;
+  }
+}

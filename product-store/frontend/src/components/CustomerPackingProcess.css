@@ -1,0 +1,219 @@
+/* =========================================
+   FONTS + TOKENS
+   Keep identical to CustomerHome.css
+========================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Sans:wght@400;500;600;700&display=swap");
+
+.customer-packing-section {
+  --yellow: #ffd400;
+  --asphalt: #1c1b19;
+  --white: #ffffff;
+  --muted: #62605a;
+  --rule: rgba(28, 27, 25, 0.16);
+
+  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --font-body: "Instrument Sans", "Segoe UI", system-ui, -apple-system,
+    Roboto, sans-serif;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --gutter: clamp(18px, 5.5vw, 84px);
+
+  width: 100%;
+  padding: clamp(60px, 8vw, 110px) var(--gutter);
+  background: var(--white);
+  color: var(--asphalt);
+  font-family: var(--font-body);
+}
+
+.customer-packing-section *,
+.customer-packing-section *::before,
+.customer-packing-section *::after {
+  box-sizing: border-box;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.customer-packing-header {
+  max-width: 620px;
+  margin: 0 auto clamp(50px, 7vw, 90px);
+  text-align: center;
+}
+
+.customer-packing-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.customer-packing-eyebrow i {
+  width: 26px;
+  height: 2px;
+  background: var(--yellow);
+}
+
+.customer-packing-header h2 {
+  margin: 16px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 5.5vw, 3.75rem);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.customer-packing-header p {
+  max-width: 30rem;
+  margin: 14px auto 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+/* =========================================
+   LIST + ROWS
+========================================= */
+
+.customer-packing-list {
+  display: flex;
+  flex-direction: column;
+  max-width: 1150px;
+  margin: 0 auto;
+  gap: clamp(48px, 8vw, 90px);
+}
+
+.customer-packing-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 64px);
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+.customer-packing-row.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Even rows (step 02, 04...) swap sides for a zig-zag read */
+.customer-packing-row:nth-child(even) .customer-packing-image-wrapper {
+  order: 2;
+}
+
+/* =========================================
+   IMAGE — bordered + hard offset shadow,
+   consistent with product/category cards
+========================================= */
+
+.customer-packing-image-wrapper {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 2px solid var(--asphalt);
+  background: #f4f1e8;
+  box-shadow: 9px 9px 0 0 var(--yellow);
+}
+
+.customer-packing-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.customer-packing-number {
+  position: absolute;
+  bottom: -2px;
+  left: -2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border: 2px solid var(--asphalt);
+  border-top: none;
+  border-left: none;
+  background: var(--yellow);
+  color: var(--asphalt);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+/* =========================================
+   TEXT
+========================================= */
+
+.customer-packing-tag {
+  display: inline-flex;
+  padding: 4px 12px;
+  border: 2px solid var(--asphalt);
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.customer-packing-text h3 {
+  margin: 16px 0 10px;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.customer-packing-text p {
+  max-width: 26rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* =========================================
+   MOBILE — stack, image always on top
+========================================= */
+
+@media (max-width: 760px) {
+  .customer-packing-row {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .customer-packing-row:nth-child(even) .customer-packing-image-wrapper {
+    order: 0;
+  }
+
+  .customer-packing-number {
+    width: 52px;
+    height: 52px;
+    font-size: 1.2rem;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .customer-packing-section *,
+  .customer-packing-section *::before,
+  .customer-packing-section *::after {
+    transition-duration: 0.01ms !important;
+  }
+
+  .customer-packing-row {
+    opacity: 1;
+    transform: none;
+  }
+}

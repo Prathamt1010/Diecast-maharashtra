@@ -1,0 +1,386 @@
+
+Customercategories · CSS
+/* =========================================
+   FONTS + TOKENS
+   Keep identical to CustomerHome.css / CustomerNavbar.css
+========================================= */
+ 
+/* @import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Sans:wght@400;500;600;700&display=swap"); */
+ 
+.customer-categories-page {
+  --yellow: #ffd400;
+  --asphalt: #1c1b19;
+  --white: #ffffff;
+  --muted: #62605a;
+  --rule: rgba(28, 27, 25, 0.16);
+ 
+  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --font-body: "Instrument Sans", "Segoe UI", system-ui, -apple-system,
+    Roboto, sans-serif;
+ 
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --gutter: clamp(18px, 5.5vw, 84px);
+ 
+  min-height: 100vh;
+  padding: clamp(56px, 8vw, 100px) var(--gutter) clamp(70px, 10vw, 130px);
+  background: var(--white);
+  color: var(--asphalt);
+  font-family: var(--font-body);
+}
+ 
+.customer-categories-page *,
+.customer-categories-page *::before,
+.customer-categories-page *::after {
+  box-sizing: border-box;
+}
+ 
+.customer-categories-page a:focus-visible,
+.customer-categories-page button:focus-visible {
+  outline: 3px solid var(--asphalt);
+  outline-offset: 3px;
+}
+ 
+/* =========================================
+   PAGE HEADER
+========================================= */
+ 
+.customer-categories-header {
+  max-width: 640px;
+  margin: 0 auto clamp(40px, 6vw, 70px);
+  text-align: center;
+}
+ 
+.customer-categories-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+ 
+.customer-categories-eyebrow i {
+  width: 26px;
+  height: 2px;
+  background: var(--yellow);
+}
+ 
+.customer-categories-header h1 {
+  margin: 16px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6.5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+ 
+.customer-categories-header p {
+  max-width: 30rem;
+  margin: 14px auto 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+ 
+/* =========================================
+   GRID
+   Extra padding so the hard shadows and tilted
+   cards have room to breathe without clipping.
+========================================= */
+ 
+.customer-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(36px, 5vw, 56px) clamp(28px, 4vw, 44px);
+  padding: 10px 14px 30px;
+}
+ 
+/* =========================================
+   CARD — thick border, hard offset shadow,
+   slight alternating tilt (neo-brutalist "sticker")
+========================================= */
+ 
+.customer-category-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  padding: 30px 26px 26px;
+  border: 3px solid var(--asphalt);
+  background: var(--white);
+  color: var(--asphalt);
+  text-decoration: none;
+  animation: customerCardIn 0.6s var(--ease) both;
+  animation-delay: calc(0.06s * var(--i));
+  transform: rotate(var(--tilt));
+  box-shadow: 9px 9px 0 0 var(--asphalt);
+  transition:
+    transform 0.3s var(--ease),
+    box-shadow 0.3s var(--ease),
+    border-color 0.3s ease;
+}
+ 
+.customer-categories-grid > a:nth-child(3n + 1) {
+  --tilt: -1.6deg;
+}
+ 
+.customer-categories-grid > a:nth-child(3n + 2) {
+  --tilt: 1deg;
+}
+ 
+.customer-categories-grid > a:nth-child(3n + 3) {
+  --tilt: -0.8deg;
+}
+ 
+/* Number sticker, pinned to the top-right corner */
+ 
+.customer-category-sticker {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: 3px solid var(--asphalt);
+  border-radius: 50%;
+  background: var(--yellow);
+  color: var(--asphalt);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  transform: rotate(-8deg);
+  transition: transform 0.3s var(--ease), background-color 0.3s ease;
+}
+ 
+.customer-category-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+ 
+.customer-category-tag i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--yellow);
+  border: 2px solid var(--asphalt);
+}
+ 
+.customer-category-card h2 {
+  margin: 16px 0 8px;
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 2.6vw, 1.95rem);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+ 
+.customer-category-card p {
+  max-width: 15rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+ 
+.customer-category-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 2px dashed var(--rule);
+}
+ 
+.customer-category-view {
+  color: var(--asphalt);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+ 
+.customer-category-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  border: 2px solid var(--asphalt);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--asphalt);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.3s var(--ease);
+}
+ 
+/* ---------- Hover / focus: straighten up + push shadow out ---------- */
+ 
+.customer-category-card:focus-visible,
+.customer-category-card:hover {
+  transform: rotate(0deg) translate(-4px, -4px);
+  box-shadow: 13px 13px 0 0 var(--yellow);
+}
+ 
+.customer-category-card:focus-visible .customer-category-sticker,
+.customer-category-card:hover .customer-category-sticker {
+  background: var(--asphalt);
+  color: var(--yellow);
+  transform: rotate(0deg);
+}
+ 
+.customer-category-card:focus-visible .customer-category-view,
+.customer-category-card:hover .customer-category-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+ 
+.customer-category-card:focus-visible .customer-category-arrow,
+.customer-category-card:hover .customer-category-arrow {
+  background: var(--asphalt);
+  color: var(--yellow);
+  transform: rotate(45deg);
+}
+ 
+/* =========================================
+   LOADING + MESSAGES
+========================================= */
+ 
+.customer-category-skeleton {
+  min-height: 250px;
+  border: 3px solid var(--rule);
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    rgba(255, 212, 0, 0.3) 50%,
+    transparent 70%
+  );
+  background-size: 300% 100%;
+  animation: customerShimmer 1.6s linear infinite;
+}
+ 
+.customer-categories-message {
+  max-width: 30rem;
+  margin: 0 auto;
+  padding: 60px 0;
+  color: var(--muted);
+  text-align: center;
+}
+ 
+.customer-categories-message p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+ 
+.customer-categories-message.is-error p {
+  color: #b3261e;
+}
+ 
+.customer-categories-message button {
+  min-height: 48px;
+  margin-top: 18px;
+  padding: 0 26px;
+  border: 2px solid var(--asphalt);
+  background: var(--yellow);
+  color: var(--asphalt);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+ 
+.customer-categories-message button:hover {
+  background: var(--asphalt);
+  color: var(--yellow);
+}
+ 
+/* =========================================
+   ANIMATIONS
+========================================= */
+ 
+@keyframes customerCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+ 
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+ 
+@keyframes customerShimmer {
+  from {
+    background-position: 100% 0;
+  }
+ 
+  to {
+    background-position: 0 0;
+  }
+}
+ 
+/* =========================================
+   TABLET
+========================================= */
+ 
+@media (max-width: 900px) {
+  .customer-categories-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+ 
+/* =========================================
+   MOBILE
+========================================= */
+ 
+@media (max-width: 576px) {
+  .customer-categories-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+ 
+  .customer-category-card {
+    min-height: 210px;
+  }
+ 
+  .customer-category-skeleton {
+    min-height: 210px;
+  }
+}
+ 
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+ 
+@media (prefers-reduced-motion: reduce) {
+  .customer-categories-page *,
+  .customer-categories-page *::before,
+  .customer-categories-page *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+ 
+  .customer-category-card {
+    transform: none !important;
+  }
+}
+ 

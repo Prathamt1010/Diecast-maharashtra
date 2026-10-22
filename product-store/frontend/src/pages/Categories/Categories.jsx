@@ -8,7 +8,7 @@ import {
 import CategoryForm from "./CategoryForm";
 import EditCategoryForm from "./EditCategoryForm";
 import DeleteConfirmModal from "../../components/Modal/DeleteConfirmModal";
-import "./categories.css";
+import "./Categories.css";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);

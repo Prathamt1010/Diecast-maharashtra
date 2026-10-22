@@ -5,7 +5,7 @@ import { ArrowLeft, MessageCircle, ImageOff } from "lucide-react";
 import CustomerNavbar from "../../components/CustomerNavbar/CustomerNavbar";
 import { getProducts } from "../../api/productApi";
 
-import "./customerProductDetails.css";
+import "./CustomerProductDetails.css";
 
 const CustomerProductDetails = () => {
   const { id } = useParams();

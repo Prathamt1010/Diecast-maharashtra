@@ -1,6 +1,6 @@
 import React from "react";
 import { X, Trash2 } from "lucide-react";
-import "./deleteConfirmModal.css";
+import "./DeleteConfirmModal.css";
 
 const DeleteConfirmModal = ({
   show,

@@ -15,7 +15,7 @@ import {
 
 import { getTestimonials } from "../api/testimonialApi";
 
-import "./customerTestimonials.css";
+import "./CustomerTestimonials.css";
 
 const AUTOPLAY_MS = 7000;
 

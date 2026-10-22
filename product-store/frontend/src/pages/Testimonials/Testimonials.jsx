@@ -16,7 +16,7 @@ import {
 import TestimonialForm from "./Components/TestimonialForm";
 import DeleteConfirmModal from "../../components/Modal/DeleteConfirmModal";
 
-import "./testimonials.css";
+import "./Testimonials.css";
 
 const Testimonials = () => {
   const [testimonials, setTestimonials] = useState([]);

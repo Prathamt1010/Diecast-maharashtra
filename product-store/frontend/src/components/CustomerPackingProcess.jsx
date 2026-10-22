@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import "./customerPackingProcess.css";
+import "./CustomerPackingProcess.css";
 
 /*
   PACKING STEPS

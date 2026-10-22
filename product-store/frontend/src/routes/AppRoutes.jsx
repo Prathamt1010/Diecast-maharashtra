@@ -70,7 +70,7 @@ const AppRoutes = () => {
 
         {/* ADMIN PRIVATE ROUTES */}
         <Route
-          path="/"
+          path="/admin"
           element={
             <PrivateRoute>
               <Layout />

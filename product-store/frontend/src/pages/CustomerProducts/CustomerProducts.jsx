@@ -7,7 +7,7 @@ import CustomerProductCard from "../../components/CustomerProductCard/CustomerPr
 import { getProducts } from "../../api/productApi";
 import { getCategories } from "../../api/categoryApi";
 
-import "./customerProducts.css";
+import "./CustomerProducts.css";
 
 const SKELETON_COUNT = 8;
 

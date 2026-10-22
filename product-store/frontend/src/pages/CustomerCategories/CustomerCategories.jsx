@@ -5,7 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import CustomerNavbar from "../../components/CustomerNavbar/CustomerNavbar";
 import { getCategories } from "../../api/categoryApi";
 
-import "./customerCategories.css";
+import "./CustomerCategories.css";
 
 const pad = (number) => String(number).padStart(2, "0");
 

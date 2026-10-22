@@ -13,7 +13,7 @@ import CustomerNavbar from "../../components/CustomerNavbar/CustomerNavbar";
 import CustomerPackingProcess from "../../components/CustomerPackingProcess";
 import CustomerTestimonials from "../../components/CustomerTestimonials";
 
-import "./customerHome.css";
+import "./CustomerHome.css";
 
 /* =========================================
    CONTENT

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 
-import "./customerNavbar.css";
+import "./CustomerNavbar.css";
 
 const NAV_ITEMS = [
   { to: "/", label: "Home", end: true },

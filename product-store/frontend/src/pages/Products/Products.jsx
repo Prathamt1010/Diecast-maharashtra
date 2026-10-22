@@ -4,7 +4,7 @@ import { getProducts , deleteProduct} from "../../api/productApi";
 import ProductForm from "../Products/ProductForm";
 import EditProductForm from "../../pages/Products/EditProductForm";
 import DeleteConfirmModal from "../../components/Modal/DeleteConfirmModal";
-import "./products.css";
+import "./Products.css";
 
 const Products = () => {
   const [products, setProducts] = useState([]);

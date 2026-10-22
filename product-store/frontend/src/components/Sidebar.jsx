@@ -9,7 +9,7 @@ import {
   LogOut,
 } from "lucide-react";
 
-import "./sidebar.css";
+import "./Sidebar.css";
 
 const Sidebar = () => {
   return (

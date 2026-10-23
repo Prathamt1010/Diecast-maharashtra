@@ -190,7 +190,7 @@ const CustomerTestimonials = () => {
         <div className="customer-testimonials-stage">
           <div className="customer-testimonial-card">
             <p className="customer-testimonial-text">
-              Loading testimonials...
+              Loading testimonials..
             </p>
           </div>
         </div>
@@ -213,7 +213,7 @@ const CustomerTestimonials = () => {
             What collectors say
           </span>
 
-          <h2>Loved by collectors</h2>
+          <h2>Loved by Real collectors</h2> 
         </div>
 
         <div className="customer-testimonials-stage">
